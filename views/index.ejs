@@ -25,13 +25,16 @@
 				
 				<% products.forEach (product => { %>
 					<section class="product-box">
-					<a href="/products/detail/<%=product.id %>">
+					<a href="/products/<%=product.id %>">
 						<figure class="product-box_image">
 							<img src="/images/products/<%=product.image %>" alt="<%= product.name %>">
 						</figure>
 						<article class="product-box_data">
 							<h2><%=product.price%>$</h2>
-							<span><%=product.discount %>%off</span>
+							<span>- <%=product.discount %>%off</span>
+							<% let descuento = product.price * product.discount/100 %>
+							<% let precioFinal = product.price - descuento %>
+							<h2>Final price <%=precioFinal%>$</h2>
 							<p><%= product.name %></p>
 							<i class="fas fa-truck"></i>
 						</article>

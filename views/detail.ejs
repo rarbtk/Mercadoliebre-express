@@ -34,9 +34,10 @@
 							<p class="product-detail-price">
 								<% let descuento = detalle.price*detalle.discount/100 %>
 								<%= detalle.price-descuento%>$
+								PRICE
 							</p>
 							<p class="product-detail-price">
-								$PRICE
+								
 							</p>
 
 						<ul class="actions-list">
@@ -53,7 +54,7 @@
 						<a href="#" class="buy-now-button">COMPRAR AHORA</a>
 						<hr>
 
-						<a href="/products/edit/¿?" class="action-button edit">EDITAR PRODUCTO</a>
+						<a href="/products/edit/<%=detalle.id%>" class="action-button edit">EDITAR PRODUCTO</a>
 						<form action="/products/delete/¿¿" method="POST" style="display: inline-flex">
 							<button type="submit" class="action-button delete">ELIMINAR</button>
 						</form>

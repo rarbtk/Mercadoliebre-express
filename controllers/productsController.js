@@ -39,6 +39,7 @@ const controller = {
 	create: (req, res) => {
 
 		res.render("../views/product-create-form")
+		
 	},
 	
 	// Create -  Method to store
