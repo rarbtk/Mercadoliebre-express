@@ -13,13 +13,13 @@ router.get('/:id', productsController.detail);
 
 //create one product
 router.get("/create",productsController.create);
-router.post('/', productsController.store);
+router.post('/create', productsController.store);
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', productsController.edit); 
-router.put('/:id?_method=PUT', productsController.update); 
-
-
+router.put('/:id', productsController.update); 
+/*** DELETE ONE PRODUCT***/
+router.delete('/delete/:id?_method=DELETE', productsController.destroy); 
   
 
 

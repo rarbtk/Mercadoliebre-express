@@ -149,6 +149,7 @@
     "discount": "20",
     "category": "in-sale",
     "description": "adadasd",
+    "image":"xiaomi.jpg",
     "id": 17
   },
   {
@@ -157,6 +158,7 @@
     "discount": "50%",
     "category": "in-sale",
     "description": "blackberry bold\r\n",
+    "image": "blackberry.jpg",
     "id": 18
   }
 ]

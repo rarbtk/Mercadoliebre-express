@@ -38,7 +38,7 @@ const controller = {
 	// Create - Form to create
 	create: (req, res) => {
 
-		res.render("../views/product-create-form")
+		res.render("./views/product-create-form")
 		
 	},
 	
@@ -49,10 +49,18 @@ const controller = {
 
 		datos = JSON.parse(datos);
 
+		const {name, price, discount, category, description} = req.body
+
 		datos.push({
 			
 			...req.body,
-			id: products[products.length-1].id+1		
+			id: products[products.length-1].id+1,
+			name,
+			price,
+			discount,
+			category,
+			description
+				
 		})
 
 		datos= JSON.stringify(datos)
@@ -85,7 +93,7 @@ const controller = {
 				element.description == req.body.description;
 			}
 			
-			res.render("../views/product-edit-form", {edicion})});
+			res.redirect("../views/products", {edicion})});
 		
 
 
