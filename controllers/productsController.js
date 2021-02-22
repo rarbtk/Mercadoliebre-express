@@ -38,7 +38,7 @@ const controller = {
 	// Create - Form to create
 	create: (req, res) => {
 
-		res.render("./views/product-create-form")
+		res.render("../views/product-create-form")
 		
 	},
 	
@@ -49,27 +49,28 @@ const controller = {
 
 		datos = JSON.parse(datos);
 
-		const {name, price, discount, category, description} = req.body
+		
+		
+		
+		
+		//console.log(nuevoProducto)
+
+
+
 
 		datos.push({
-			
 			...req.body,
-			id: products[products.length-1].id+1,
-			name,
-			price,
-			discount,
-			category,
-			description
-				
-		})
+			id: datos[datos.length-1].id+1,
+		});
+			
+			console.log(req.body)
 
-		datos= JSON.stringify(datos)
+		datos = JSON.stringify(datos)
 
 		fs.writeFileSync("./data/productsDataBase.json", datos)
 
-
-		console.log(req.body)
-		res.send("recivido")
+		
+		res.redirect("../views/products")
 	},
 
 	// Update - Form to edit

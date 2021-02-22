@@ -149,7 +149,7 @@
     "discount": "20",
     "category": "in-sale",
     "description": "adadasd",
-    "image":"xiaomi.jpg",
+    "image": "xiaomi.jpg",
     "id": 17
   },
   {
@@ -160,5 +160,23 @@
     "description": "blackberry bold\r\n",
     "image": "blackberry.jpg",
     "id": 18
+  },
+  {
+    "name": "lavadora",
+    "price": "2500",
+    "discount": "10",
+    "category": "in-sale",
+    "description": "Lavadora que lava mucho",
+    "image": "https://falabella.scene7.com/is/image/Falabella/8304858_1?wid=800&hei=800&qlt=70",
+    "id": 19
+  },
+  {
+    "name": "computadora",
+    "price": "2540",
+    "discount": "50",
+    "category": "in-sale",
+    "description": "computadora mostra ",
+    "image": "https://img.global.news.samsung.com/mx/wp-content/uploads/2019/01/Notebook-9-Pro-3.jpg",
+    "id": 20
   }
 ]
