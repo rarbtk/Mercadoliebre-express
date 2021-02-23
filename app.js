@@ -10,6 +10,9 @@ let multer = require("multer") ;
 const bodyParser= require('body-parser');
 
 
+
+
+
 //const basejson = require("./data/productsDataBase.json");// requiriendo la base de datos json
 
 // ************ express() - (don't touch) ************

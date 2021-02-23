@@ -43,7 +43,7 @@ const controller = {
 	},
 	
 	// Create -  Method to store
-	store: (req, res) => {
+	store: (req, res, next) => {
 
 		let datos = fs.readFileSync("./data/productsDataBase.json", {encoding: "utf-8"})
 
@@ -61,6 +61,7 @@ const controller = {
 		datos.push({
 			...req.body,
 			id: datos[datos.length-1].id+1,
+			image: req.files[0].filename
 		});
 			
 			console.log(req.body)
@@ -70,7 +71,7 @@ const controller = {
 		fs.writeFileSync("./data/productsDataBase.json", datos)
 
 		
-		res.redirect("../views/products")
+		res.redirect("/products")
 	},
 
 	// Update - Form to edit
