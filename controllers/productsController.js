@@ -1,9 +1,10 @@
+const { log } = require('console');
 const { json } = require('express');
 const fs = require('fs');
 const path = require('path');
 const { send } = require('process');
 
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
+const productsFilePath = path.join(__dirname,'../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -83,24 +84,38 @@ const controller = {
 	
 	update: (req, res, next) => {
 
-	let edicion = fs.readFileSync("./data/productsDataBase.json", {encoding: "utf-8"});
+		let products = fs.readFileSync("./data/productsDataBase.json", {encoding: "utf-8"})
+
+
+		products = JSON.parse(products);
+
 		
-	edicion = JSON.parse(edicion);
-
-	edicion =	products.forEach(element => {
+		products.forEach(element => {
 			if(element.id == req.params.id){
-				element.name == req.body.name;
-				element.price == req.body.price;
-				element.discount == req.body.discount;
-				element.category == req.body.category;
-				element.description == req.body.description;
-			}
+				element.name = req.body.name;
+				element.price = req.body.price;
+				element.discount = req.body.discount;
+				element.category = req.body.category;
+				element.description = req.body.description;
+			};
 
-			edicion = JSON.stringify(edicion);
+			console.log(element)
+
 			
-			fs.writeFileSync(edicion, JSON.stringify(element))
+			products = JSON.stringify(products)
 			
-			res.render("/products", {products: element})});
+			fs.writeFileSync(products[req.params.id], JSON.stringify(element))
+
+
+			console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+			console.log(element)
+		
+
+			products = JSON.parse(products)
+			
+
+			
+			res.render("products", {products})});
 		
 
 
