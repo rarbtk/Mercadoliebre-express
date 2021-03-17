@@ -4,9 +4,13 @@ const fs = require('fs');
 const path = require('path');
 const { send } = require('process');
 
-const productsFilePath = path.join(__dirname,'../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+//const productsFilePath = path.join(__dirname,'../data/productsDataBase.json');
+//const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+//const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+const productos = fs.readFileSync("./data/productsDatabase.json", "utf-8");
+let products = JSON.parse(productos);
+
 
 
 
@@ -129,14 +133,16 @@ const controller = {
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
 
-		products = products.filter(function (producto_eliminado){
-			producto_eliminado != req.params.id;
-
-		} )
-		products = JSON.stringify (products);
-		fs.writeFileSync('../data/productsDataBase.json',products, "utf-8");
+		products = products.filter(borrado => borrado.id != req.params.id);
 		
-		res.render("products", products);
+		products = JSON.stringify(products)
+
+		console.log(products)
+		
+		fs.writeFileSync('./data/productsDataBase.json', products, 'utf-8')
+
+		res.redirect("/")
+
 
 	}
 };

@@ -37,7 +37,7 @@ router.get('/:id', productsController.detail);
 router.get('/edit/:id', productsController.edit); 
 router.put('/edit/:id', productsController.update); 
 /*** DELETE ONE PRODUCT***/
-router.delete('/delete/:id?_method=DELETE', productsController.destroy); 
+router.get('/delete/:id', productsController.destroy); 
   
 
 
