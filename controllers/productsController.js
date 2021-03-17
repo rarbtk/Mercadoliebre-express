@@ -84,38 +84,43 @@ const controller = {
 	
 	update: (req, res, next) => {
 
-		let products = fs.readFileSync("./data/productsDataBase.json", {encoding: "utf-8"})
+		let productos_parse = fs.readFileSync("./data/productsDataBase.json", {encoding: "utf-8"})
+
+		console.log(productos_parse)
+		let productos = JSON.parse(productos_parse);
+		console.log("aASDFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+		console.log(productos)
+		
+		for (var i = 0; i < productos.length; i++){
+			if(productos[i].id == req.params.id){
+				productos[i].name = req.body.name;
+				productos[i].price = req.body.price;
+				productos[i].discount = req.body.discount;
+				productos[i].category = req.body.category;
+				productos[i].description = req.body.description;
+				console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+				console.log(productos[i])
+			}
+		}
+	
 
 
-		products = JSON.parse(products);
+			
+			const products_json = JSON.stringify(productos)
+			
+			fs.writeFileSync(products, products_json, "utf-8");
+
+			products = JSON.parse(products);
+
+			
+			
+		
 
 		
-		products.forEach(element => {
-			if(element.id == req.params.id){
-				element.name = req.body.name;
-				element.price = req.body.price;
-				element.discount = req.body.discount;
-				element.category = req.body.category;
-				element.description = req.body.description;
-			};
-
-			console.log(element)
-
-			
-			products = JSON.stringify(products)
-			
-			fs.writeFileSync(products[req.params.id], JSON.stringify(element))
-
-
-			console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-			console.log(element)
-		
-
-			products = JSON.parse(products)
 			
 
 			
-			res.render("products", {products})});
+			res.render("products", {products});
 		
 
 
@@ -123,7 +128,16 @@ const controller = {
 
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
-		// Do the magic
+
+		products = products.filter(function (producto_eliminado){
+			producto_eliminado != req.params.id;
+
+		} )
+		products = JSON.stringify (products);
+		fs.writeFileSync('../data/productsDataBase.json',products, "utf-8");
+		
+		res.render("products", products);
+
 	}
 };
 

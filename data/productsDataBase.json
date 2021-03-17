@@ -169,5 +169,14 @@
     "description": "mi prima",
     "id": 19,
     "image": "image-1614047793497.jpg"
+  },
+  {
+    "name": "Cafetera ",
+    "price": "100",
+    "discount": "10",
+    "category": "",
+    "description": "asd",
+    "id": 20,
+    "image": "image-1615955069485.pdf"
   }
 ]
